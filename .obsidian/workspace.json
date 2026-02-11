@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "13b27522dc57c868",
+    "type": "split",
+    "children": [
+      {
+        "id": "abfd4a91bc5ef53c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13f4e2372b87b356",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "RAG/Formal Task.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Formal Task"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2c5f5301f7e96e3a",
+    "type": "split",
+    "children": [
+      {
+        "id": "8b72f40933679e5c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd4d8ba0550b482d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e30863eebe4c7997",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2ddeeb795f76a609",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 298.5
+  },
+  "right": {
+    "id": "8e516f90ff888bfb",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb50f9b2c3f3a5df",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8131d41d0865dab4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "RAG/Formal Task.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Formal Task"
+            }
+          },
+          {
+            "id": "6f389f78a4375745",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "7eb3610060107dad",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c07f10d3253dc28b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "517da6d68ead269b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "13f4e2372b87b356",
+  "lastOpenFiles": [
+    "RAG/Сomparative analysis of existing solutions.md",
+    "Math/Vector Similarity.md",
+    "Ideas/Template-based Optimization.md",
+    "Ideas/Summary on entities.md",
+    "Ideas/Parallel Query Optimization.md",
+    "Ideas/Is High Context in LightRAG real High.md",
+    "Ideas/Balance HSNWs.md",
+    "Articles/RAG/GraphRAG.pdf",
+    "Articles/RAG/graphrag_local_global_2404.16130.pdf",
+    "RAG/Components/Graph/Graph.md",
+    "image.png",
+    "image copy.png",
+    "Tags.md",
+    "Untitled.base",
+    "Untitled.canvas",
+    "Heuristic-based Retriever.md",
+    "2026-02-06.md",
+    "RAG/Formal Task.md",
+    "RAG/Components/Query Processor/Query/Query Decomposition.md",
+    "RAG/Components/Query Processor/Query/Query.md",
+    "RAG/Components/Retriever/Advanced/Advanced Retrieval Strategies.md",
+    "RAG/Components/Retriever/Retriever.md",
+    "RAG/Components/Generator/Generator.md",
+    "Articles/RAG/graphrag_bench_2506.02404.pdf",
+    "Articles/RAG/GraphRAG и LightRAG_ обзор подходов.pdf",
+    "Articles/RAG/kg_guided_rag_2502.06864.pdf",
+    "Articles/RAG/t_grag_2508.01680.pdf",
+    "Articles/RAG/semrag_2507.21110.pdf",
+    "Articles/RAG/remindrag_2510.13193.pdf",
+    "NLP/Named Entity Recognition.md",
+    "NLP/Relation Extraction.md",
+    "RAG/Components/Query Processor/Query Processor.md",
+    "RAG/Components/Retriever/Advanced/Iterative Retrieval.md",
+    "RAG/Components/Retriever/Retriever.md.tmp.4316.1770065409389",
+    "RAG/Components/Retriever/Advanced/Integrated Retrieval.md",
+    "RAG/Components/Retriever/Advanced/Adaptive Retrieval.md",
+    "RAG/Components/Retriever/Learning-based/Node2Vec.md",
+    "RAG/Components/Retriever/Learning-based/Learning-based Retriever.md"
+  ]
+}
