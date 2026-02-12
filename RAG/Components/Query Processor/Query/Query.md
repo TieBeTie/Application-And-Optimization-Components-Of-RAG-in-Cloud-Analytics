@@ -15,4 +15,4 @@ $$Q \xrightarrow{\Omega^{Processor}} \hat{Q}$$
 - [[Query Expansion]] — add context from [[Graph]]
 - [[Query Structuration]] — convert to structured form
 
-See also: [[Formal Task]], [[Graph]]
+See also: [[GraphRAG query process]], [[Graph]]

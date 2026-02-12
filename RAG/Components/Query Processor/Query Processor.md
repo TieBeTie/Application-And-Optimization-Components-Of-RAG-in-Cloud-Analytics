@@ -19,4 +19,4 @@ $$\hat{Q} = \Omega^{Processor}(Q)$$
 | [[Query Decomposition]] | Split $Q$ into sub-queries | [[Query]] |
 | [[Query Expansion]] | Add context from [[Graph]] $G$ | [[Query]] |
 
-See also: [[Formal Task]], [[Retriever]], [[Graph]]
+See also: [[GraphRAG query process]], [[Retriever]], [[Graph]]

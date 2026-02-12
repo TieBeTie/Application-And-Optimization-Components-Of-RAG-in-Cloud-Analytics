@@ -1,6 +1,4 @@
-# Template-based Optimization
-
-**Status:** Idea 💡
+#idea #question 
 
 ## Hypothesis
 

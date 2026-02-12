@@ -88,6 +88,6 @@ ToG iteration:
 4. Answer: "I'm a Jayhawk"
 ```
 
-See also: [[Graph Traversal]], [[GNN]], [[Advanced Retrieval Strategies]]
+See also: [[RAG Traversal]], [[GNN]], [[Advanced Retrieval Strategies]]
 
 #retriever #advanced #iterative

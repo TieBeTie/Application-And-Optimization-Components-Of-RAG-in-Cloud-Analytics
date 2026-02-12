@@ -4,4 +4,5 @@ There is a statement that the set of neighbor relationships and entities of the 
 
 How can they be pruned? Perhaps, with the help of LLM, or we need to define something else during the construction of RAG.
 
-#retriever #optimization #question
+ #optimization #question #rag-traversal
+ 

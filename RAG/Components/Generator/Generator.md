@@ -17,4 +17,4 @@ $$A = \Omega^{Generator}(\hat{Q}, S)$$
 | Map-Reduce | Aggregate community summaries | GraphRAG |
 | Iterative | Multi-step generation | |
 
-See also: [[Formal Task]], [[Organizer]], [[Query Processor]]
+See also: [[GraphRAG query process]], [[Organizer]], [[Query Processor]]

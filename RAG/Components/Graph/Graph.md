@@ -21,4 +21,4 @@ A graph $G = (V, E)$ where:
 - [[Retriever]] — searches in $G$ to find content $C$
 - [[Organizer]] — structures content from $G$
 
-See also: [[Formal Task]]
+See also: [[GraphRAG query process]]

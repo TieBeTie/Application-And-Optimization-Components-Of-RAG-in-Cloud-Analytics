@@ -75,6 +75,6 @@ Query 3: "Einstein's birthplace?"
 | Avoids conflicts | Hard to calibrate |
 | More efficient | May skip needed retrieval |
 
-See also: [[Advanced Retrieval Strategies]], [[Graph Traversal]]
+See also: [[Advanced Retrieval Strategies]], [[RAG Traversal]]
 
 #retriever #advanced #adaptive

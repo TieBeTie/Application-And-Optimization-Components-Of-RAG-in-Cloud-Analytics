@@ -8,7 +8,7 @@ Retrieval using predefined rules, algorithms, and domain knowledge.
 |--------|--------------|------|
 | [[Entity Linking]] | Map entities → nodes | NER + mapping |
 | [[Relation Matching]] | Map relations → edges | RE + mapping |
-| [[Graph Traversal]] | Explore graph (BFS/DFS) | Path finding |
+| [[RAG Traversal]] | Explore graph (BFS/DFS) | Path finding |
 | [[Graph Kernel]] | Compare graph structures | Similarity |
 | [[Domain Expertise]] | Domain-specific rules | Expert knowledge |
 

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "abfd4a91bc5ef53c",
+        "id": "bd3008d79061fe4b",
         "type": "tabs",
         "children": [
           {
-            "id": "13f4e2372b87b356",
+            "id": "a063b338433bf953",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "RAG/Formal Task.md",
+                "file": "RAG/LightRAG/LightRAG Query.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Formal Task"
+              "title": "LightRAG Query"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "RAG/Formal Task.md",
+                "file": "Articles/RAG/lightrag_acl_2025_findings_emnlp_568.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Formal Task"
+              "title": "Backlinks for lightrag_acl_2025_findings_emnlp_568"
             }
           },
           {
@@ -182,45 +182,84 @@
       "bases:Create new base": false
     }
   },
-  "active": "13f4e2372b87b356",
+  "floating": {
+    "id": "3ae06a55bbefc032",
+    "type": "floating",
+    "children": [
+      {
+        "id": "83e7c3aa4a433b41",
+        "type": "window",
+        "children": [
+          {
+            "id": "b865437e235c4bbe",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "594e0fcefc52a9aa",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "Articles/RAG/lightrag_acl_2025_findings_emnlp_568.pdf"
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "lightrag_acl_2025_findings_emnlp_568"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": -1459,
+        "y": 196,
+        "width": 1278,
+        "height": 1040,
+        "maximize": true,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "594e0fcefc52a9aa",
   "lastOpenFiles": [
+    "RAG/LightRAG/LightRAG Update.md.tmp.33244.1770917756862",
+    "RAG/LightRAG/LightRAG Query.md.tmp.33244.1770917751699",
+    "RAG/LightRAG/LightRAG Init.md.tmp.33244.1770917746466",
+    "RAG/LightRAG/LightRAG Query.md",
+    "Articles/RAG/lightrag_acl_2025_findings_emnlp_568.pdf",
+    "RAG/Components/Organizer/Organizer.md.tmp.33244.1770917330997",
+    "Ideas/Is High Context in LightRAG real High.md",
+    "RAG/LightRAG/LightRAG Query.md.tmp.33244.1770916965332",
+    "RAG/LightRAG/LightRAG Query.md.tmp.33244.1770916408535",
+    "RAG/LightRAG/LightRAG Init.md",
+    "RAG/GraphRAG query process.md",
     "RAG/Сomparative analysis of existing solutions.md",
-    "Math/Vector Similarity.md",
+    "RAG/LightRAG/LightRAG Update.md",
+    "RAG/Components/Graph/Profiling (Key–Value Gen.).md",
+    "RAG/LightRAG/LightRAG Init.md.tmp.33244.1770916001333",
+    "RAG/LightRAG/LightRAG Query.md.tmp.33244.1770915918988",
+    "RAG/Components/Graph/Profiling (Key–Value Gen.).md.tmp.33244.1770915902308",
+    "RAG/Components/Graph/Graph.md",
+    "RAG/LightRAG/LightRAG Update.md.tmp.33244.1770913264168",
+    "RAG/LightRAG Init.md",
+    "RAG/Components/Organizer/Organizer.md",
+    "Profiling (Key–Value Gen.).md",
+    "NLP/Relation Extraction.md",
+    "NLP/Named Entity Recognition.md",
+    "Ideas/Balance HSNWs.md",
     "Ideas/Template-based Optimization.md",
     "Ideas/Summary on entities.md",
+    "RAG/Components/Retriever/Advanced/Adaptive Retrieval.md",
+    "RAG/Components/Retriever/Advanced/Iterative Retrieval.md",
+    "RAG/Components/Retriever/Advanced/Integrated Retrieval.md",
+    "RAG/Components/Retriever/Advanced/Advanced Retrieval Strategies.md",
+    "RAG/Components/Generator/Generator.md",
+    "RAG/Components/Retriever/Heuristic-based/Graph Kernel.md",
+    "Math/Vector Similarity.md",
     "Ideas/Parallel Query Optimization.md",
-    "Ideas/Is High Context in LightRAG real High.md",
-    "Ideas/Balance HSNWs.md",
-    "Articles/RAG/GraphRAG.pdf",
-    "Articles/RAG/graphrag_local_global_2404.16130.pdf",
-    "RAG/Components/Graph/Graph.md",
+    "RAG/Components/Retriever/Heuristic-based/RAG Traversal.md",
+    "Pasted image 20260211232442.png",
     "image.png",
     "image copy.png",
-    "Tags.md",
-    "Untitled.base",
-    "Untitled.canvas",
-    "Heuristic-based Retriever.md",
-    "2026-02-06.md",
-    "RAG/Formal Task.md",
-    "RAG/Components/Query Processor/Query/Query Decomposition.md",
-    "RAG/Components/Query Processor/Query/Query.md",
-    "RAG/Components/Retriever/Advanced/Advanced Retrieval Strategies.md",
-    "RAG/Components/Retriever/Retriever.md",
-    "RAG/Components/Generator/Generator.md",
-    "Articles/RAG/graphrag_bench_2506.02404.pdf",
-    "Articles/RAG/GraphRAG и LightRAG_ обзор подходов.pdf",
-    "Articles/RAG/kg_guided_rag_2502.06864.pdf",
-    "Articles/RAG/t_grag_2508.01680.pdf",
-    "Articles/RAG/semrag_2507.21110.pdf",
-    "Articles/RAG/remindrag_2510.13193.pdf",
-    "NLP/Named Entity Recognition.md",
-    "NLP/Relation Extraction.md",
-    "RAG/Components/Query Processor/Query Processor.md",
-    "RAG/Components/Retriever/Advanced/Iterative Retrieval.md",
-    "RAG/Components/Retriever/Retriever.md.tmp.4316.1770065409389",
-    "RAG/Components/Retriever/Advanced/Integrated Retrieval.md",
-    "RAG/Components/Retriever/Advanced/Adaptive Retrieval.md",
-    "RAG/Components/Retriever/Learning-based/Node2Vec.md",
-    "RAG/Components/Retriever/Learning-based/Learning-based Retriever.md"
+    "Untitled.canvas"
   ]
 }

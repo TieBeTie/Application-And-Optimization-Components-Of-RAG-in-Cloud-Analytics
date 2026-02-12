@@ -1,6 +1,6 @@
 # Parallel Query Optimization
 
-**Status:** Idea 💡
+#idea #question 
 
 ## Hypothesis
 
@@ -44,4 +44,3 @@ User Query → [q₁, q₂, q₃, ..., qₙ] → Attention Matrix
 
 See also: [[Query Decomposition]], [[Retriever]], [[Generator]]
 
-#idea #optimization #parallelization #question 

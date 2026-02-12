@@ -2,4 +2,4 @@ Can we balance the length of the RAG relationships? In LeanRAG there are 3 level
 
 For example, LLM can be not only summarize the entities and relationships between levels but also regulate the count of entities in levels? What if there is an optimal count of them?
 
-#retriever #optimization #question #HSNW
+ #optimization #question #HSNW

@@ -1,15 +1,26 @@
 # Organizer $\Omega^{Organizer}$
 
-Arrange and refine retrieved content $C$ into structured content $S$.
+Refine retrieved content $C$ into structured content $S$ for [[Generator]].
 
-$$S = \Omega^{Organizer}(C)$$
+$$S = \Omega^{Organizer}(\hat{Q}, C)$$
+
+> Takes both query $\hat{Q}$ and content $C$ — task-aware refinement.
 
 ## Input / Output
 
-- **Input:** $C$ — retrieved content (from [[Retriever]])
-- **Output:** $S$ — structured/organized content for [[Generator]]
+- **Input:** $\hat{Q}$ (from [[Query Processor]]), $C$ (from [[Retriever]])
+- **Output:** $S$ — structured content for [[Generator]]
 
-## Structures
+## Methods
+
+| Method | What it does |
+|--------|--------------|
+| **Graph Pruning** | Remove irrelevant nodes/edges from $C$ |
+| **Reranking** | Reorder by semantic relevance or structural importance |
+| **Graph Augmentation** | Enrich $C$ with additional context |
+| **Verbalizing** | Convert graph structure → natural language text |
+
+## Graph Structures
 
 | Structure | Description | Papers |
 |-----------|-------------|--------|
@@ -17,10 +28,16 @@ $$S = \Omega^{Organizer}(C)$$
 | Community hierarchy | Leiden/Louvain clustering | GraphRAG |
 | Temporal KG | Time-aware | T-GRAG |
 
-## Functions
+## Pipeline
 
-- Deduplication
-- Ranking
-- Summarization
+```mermaid
+graph TD
+    C["Retrieved content C"] --> PRUNE["Graph Pruning"]
+    Q["Query Q̂"] --> RANK
+    PRUNE --> RANK["Reranking"]
+    RANK --> AUG["Graph Augmentation"]
+    AUG --> VERB["Verbalizing (graph → text)"]
+    VERB --> S["Structured content S → Generator"]
+```
 
-See also: [[Formal Task]], [[Retriever]], [[Generator]], [[Graph]]
+See also: [[GraphRAG query process]], [[Retriever]], [[Generator]], [[Graph]]

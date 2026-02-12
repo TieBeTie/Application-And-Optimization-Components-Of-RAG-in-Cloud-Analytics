@@ -1,5 +1,4 @@
-# Vector Similarity
-
+#metrics
 Measure how similar two vectors are. Used in [[Named Entity Recognition|NER]], [[Relation Extraction]], [[Retriever]].
 
 ## Metrics

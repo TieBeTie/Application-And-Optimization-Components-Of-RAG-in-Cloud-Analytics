@@ -1,5 +1,4 @@
-# GraphRAG Formal Task
-
+#RAG 
 ## Given
 
 - [[Graph]] $G$ — graph-structured data source

@@ -1,4 +1,3 @@
-# Graph Traversal
 
 Explore [[Graph]] $G$ using traversal algorithms starting from nodes found by [[Entity Linking]].
 

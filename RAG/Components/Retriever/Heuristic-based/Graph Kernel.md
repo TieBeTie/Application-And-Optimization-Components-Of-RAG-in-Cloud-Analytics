@@ -65,4 +65,4 @@ WL Kernel:
 
 See also: [[Retriever]], [[Vector Similarity]], [[Graph]]
 
-#retriever #heuristic #graph-kernel
+#retriever #heuristic

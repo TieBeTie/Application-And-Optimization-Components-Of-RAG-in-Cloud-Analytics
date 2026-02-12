@@ -32,7 +32,7 @@ $$C = \Omega^{Retriever}(\hat{Q}, G)$$
 
 - [[Entity Linking]] — map entities to nodes
 - [[Relation Matching]] — map relations to edges
-- [[Graph Traversal]] — BFS, DFS, L-hop
+- [[RAG Traversal]] — BFS, DFS, L-hop
 - [[Graph Kernel]] — compare graph structures
 - [[Domain Expertise]] — domain-specific rules
 
@@ -43,6 +43,6 @@ $$C = \Omega^{Retriever}(\hat{Q}, G)$$
 | Heuristic | Fast, interpretable | Rigid, needs expertise |
 | Learning | Flexible, semantic | Slow, needs training |
 
-See also: [[Formal Task]], [[Query Processor]], [[Organizer]], [[Graph]]
+See also: [[GraphRAG query process]], [[Query Processor]], [[Organizer]], [[Graph]]
 
 #retriever
