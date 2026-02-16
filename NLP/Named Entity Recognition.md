@@ -1,37 +1,65 @@
 # Named Entity Recognition (NER)
 
-Extract named entities from text and map them to nodes in [[Graph]] $G$.
+## Intuition
 
-## Approaches
+Find named entities (people, places, organizations, ...) in text and classify their type. First step in mapping text to a [[Graph]].
 
-1. **Rule-based** — handcrafted rules, no annotated data
-2. **Unsupervised** — learn without labels
-3. **Feature-based supervised** — traditional ML with manual features
-4. **Deep learning / LLM** — best accuracy, but slower
+## Definition
 
-Recent developments show LLM-based extraction achieves best results.
+A sequence labeling task: given a sequence of tokens $x_1, \ldots, x_n$, assign a label $y_i$ to each token.
 
-## Example
+$$f: (x_1, \ldots, x_n) \to (y_1, \ldots, y_n), \quad y_i \in \mathcal{T}$$
 
-Query: "What is the best way to guess the color of the eye of the baby?"
-→ Entities: `baby`, `eye`, `color`
-→ Map to nodes in [[Graph]] $G$
+where $\mathcal{T}$ is a tag set (e.g. IOB format).
 
-## In RAG Pipeline
+### Example
 
-[[Query Processor]] → NER → [[Retriever]]
+| Token | Tag |
+|-------|-----|
+| Albert | B-PER |
+| Einstein | I-PER |
+| was | O |
+| born | O |
+| in | O |
+| Ulm | B-LOC |
 
-1. Extract entities from [[Query]] $Q$
-2. Recognize entity **type** (not just name)
-3. Map to nodes in [[Graph]] $G$ via [[Vector Similarity]]
-4. [[Retriever]] uses types to match nodes for exploration
+B = beginning of entity, I = inside, O = outside.
 
-## Search
+## Properties
 
-Nodes in $G$ are matched by [[Vector Similarity]] (embeddings).
+### IOB tagging
 
-> Entity recognition should be based on both semantic name AND entity type.
+| Tag | Meaning |
+|-----|---------|
+| B-X | Beginning of entity of type X |
+| I-X | Inside (continuation) of entity X |
+| O | Outside any entity |
 
-See also: [[Relation Extraction]] (same approach for edges)
+Variants: IO, IOB/BIO, IOBES (adds E = end, S = single token).
+
+### Approaches
+
+| Approach | Method |
+|----------|--------|
+| Rule-based | Regex, dictionaries, gazetteers |
+| Feature-based ML | CRF, HMM with handcrafted features |
+| Deep learning | BiLSTM-CRF, Transformer-based |
+| LLM-based | Prompt-based extraction (best accuracy) |
+
+### Entity types
+
+Standard: PER, LOC, ORG, DATE, NUM.
+
+Domain-specific: Gene, Disease, Drug (biomedical), Financial Instrument (finance).
+
+> Entity recognition should capture both semantic name AND entity type.
+
+## In RAG
+
+[[Query Processor]] extracts entities from [[Query]] $Q$, maps them to nodes in [[Graph]] $G$ via [[Vector Similarity]].
+
+$$Q \xrightarrow{\text{NER}} \{e_1, \ldots, e_k\} \xrightarrow{\text{sim}} \text{nodes in } G$$
+
+See also: [[Relation Extraction]], [[Vector Similarity]], [[Query Processor]]
 
 #nlp #query-processing
