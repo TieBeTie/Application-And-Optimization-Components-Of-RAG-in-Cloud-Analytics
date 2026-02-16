@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "RAG/LightRAG/LightRAG Init.md",
+                "file": "Inference/OBQ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LightRAG Init"
+              "title": "OBQ"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "RAG/LightRAG/LightRAG Init.md",
+                "file": "Inference/OBQ.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for LightRAG Init"
+              "title": "Backlinks for OBQ"
             }
           },
           {
@@ -184,6 +184,33 @@
   },
   "active": "c653e20784b8f8cd",
   "lastOpenFiles": [
+    "Inference/Layer-wise Quantization.md",
+    "Inference/GPTQ Algorithm.md",
+    "Inference/FLOPs.md",
+    "Inference/OBQ.md",
+    "Inference/QAT.md",
+    "Inference/Quantization",
+    "Inference/PTQ.md",
+    "Inference/Quantization Grid.md",
+    "Math/Vector Similarity.md",
+    "Math/Softmax.md",
+    "Math/Cholesky Decomposition.md",
+    "Math/Hessian Matrix.md",
+    "Inference/Quantization.md",
+    "Inference/GPTQ Algorithm.md.tmp.34080.1771129975058",
+    "Inference/Perplexity.md",
+    "Inference/OBQ.md.tmp.34080.1771129945817",
+    "Inference/Layer-wise Quantization.md.tmp.34080.1771129920455",
+    "Math/Vector Similarity.md.tmp.34080.1771129905501",
+    "Math/Cholesky Decomposition.md.tmp.34080.1771129893997",
+    "Math/Hessian Matrix.md.tmp.34080.1771129871314",
+    "Inference/QAT.md.tmp.34080.1771129298076",
+    "Ideas/Is High Context in LightRAG real High.md",
+    "Ideas/Balance HSNWs.md",
+    "Articles/RAG/GraphRAG.pdf",
+    "Articles/RAG/graphrag_bench_2506.02404.pdf",
+    "RAG/LightRAG/LightRAG Init.md",
+    "Articles/Inference/GPTQ.md",
     "RAG/Components/Retriever/Heuristic-based/Graph Kernel.md",
     "RAG/Components/Retriever/Heuristic-based/Entity Linking.md",
     "RAG/Components/Retriever/Heuristic-based/Domain Expertise.md",
@@ -192,34 +219,6 @@
     "RAG/Components/Query Processor/Query/Query Structuration.md",
     "RAG/Components/Query Processor/Query/Query Decomposition.md",
     "RAG/Components/Query Processor/Query/Query Expansion.md",
-    "RAG/Components/Query Processor/Query Processor.md",
-    "Articles/RAG/KGoT.md",
-    "RAG/LightRAG/LightRAG Update.md",
-    "RAG/GraphRAG query process.md",
-    "RAG/LightRAG/LightRAG Init.md",
-    "RAG/Components/Query Processor/Query/Query.md",
-    "Articles/RAG/Knowledge Graph of Thoughts.pdf",
-    "Articles/RAG/semrag_2507.21110.pdf",
-    "Articles/RAG/2504.02670v6.pdf",
-    "Articles/RAG/xgraphrag_2506.13782.pdf",
-    "Articles/RAG/t_grag_2508.01680.pdf",
-    "Articles/RAG/remindrag_2510.13193.pdf",
-    "Articles/RAG/lightrag_2410.05779.pdf",
-    "Articles/RAG/lightrag_acl_2025_findings_emnlp_568.pdf",
-    "Articles/RAG/leanrag_2508.10391.pdf",
-    "Articles/RAG/GraphRAG и LightRAG_ обзор подходов.pdf",
-    "RAG/LightRAG/LightRAG Query.md",
-    "RAG/Components/Retriever/Heuristic-based/Heuristic-based Retriever.md",
-    "RAG/Components/Retriever/Heuristic-based/RAG Traversal.md",
-    "RAG/Components/Retriever/Advanced/Advanced Retrieval Strategies.md",
-    "RAG/Components/Retriever/Advanced/Adaptive Retrieval.md",
-    "RAG/Components/Organizer/Organizer.md",
-    "RAG/Components/Graph/Profiling (Key–Value Gen.).md",
-    "RAG/Components/Graph/Graph.md",
-    "Math/Vector Similarity.md",
-    "Ideas/Template-based Optimization.md",
-    "Ideas/Summary on entities.md",
-    "Ideas/Parallel Query Optimization.md",
     "Untitled.canvas",
     "Pasted image 20260211232442.png",
     "image copy.png",
