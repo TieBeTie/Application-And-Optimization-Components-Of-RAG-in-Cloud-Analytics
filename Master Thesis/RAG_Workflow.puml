@@ -1,0 +1,64 @@
+@startuml RAG_Workflow
+!theme plain
+skinparam backgroundColor white
+skinparam activityBorderColor black
+skinparam activityBackgroundColor #lightblue
+skinparam activityDiamondBackgroundColor lightgray
+left to right direction
+
+title Поток обработки документов и запросов
+
+start
+
+:Загрузка документа\n(PDF / DOCX / CSV);
+
+if (Тип файла?) then (CSV)
+  :Table-aware Chunker\n(группы строк + заголовок\nв каждом чанке);
+else (PDF / DOCX)
+  :Standard Chunker;
+endif
+
+:spaCy NER + RE\n(извлечение сущностей и связей без LLM);
+
+fork
+  :LightRAG Knowledge Graph;
+  :GMM Clustering → Иерархия уровней;
+fork again
+  :BGE-M3 Vector Store;
+end fork
+
+:Индексация завершена;
+
+note right
+  Init: O(N_chunks) spaCy вызовов
+  LLM не используется
+end note
+
+detach
+
+start
+
+:Запрос пользователя;
+
+:Query Processor;
+
+fork
+  :Graph traversal bottom-up\n(от точных сущностей\nвверх по иерархии);
+fork again
+  :Vector search fallback\n(BGE-M3, top-k);
+end fork
+
+:Organizer\n(ранжирование + token limit);
+
+:vLLM Generator\n(self-hosted inference);
+
+:Ответ пользователю;
+
+note right
+  Retrieved context: ≈ 0.9М токенов
+  Latency: ≤ 5 сек
+end note
+
+stop
+
+@enduml

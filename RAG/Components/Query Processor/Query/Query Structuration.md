@@ -6,10 +6,10 @@ $$Q \xrightarrow{\text{structure}} Q_{struct}$$
 
 ## Two approaches
 
-| Approach | Output | When to use |
-|----------|--------|-------------|
-| [[Structured Query Language]] | SQL, Cypher, SPARQL | Querying databases directly |
-| [[Structured Reasoning]] | Graph of Thoughts (KGoT) | Complex multi-step reasoning |
+| Approach                      | Output                   | When to use                  |
+| ----------------------------- | ------------------------ | ---------------------------- |
+| [[Structured Query Language]] | SQL, Cypher, SPARQL      | Querying databases directly  |
+| [[Structured Reasoning]]      | Graph of Thoughts (KGoT) | Complex multi-step reasoning |
 
 Both structure the query, but differently:
 - First structures **format** (into DB language)

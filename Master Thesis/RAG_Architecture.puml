@@ -1,0 +1,66 @@
+@startuml RAG_Architecture
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor white
+skinparam defaultTextAlignment center
+
+cloud "Корпоративные документы" as sources {
+  component "PDF / DOCX" as pdfdocx
+  component "CSV" as csv
+}
+
+package "**Indexer**" as comp1 {
+  component "Chunker" as chunker
+  component "spaCy NER+RE\n(без LLM)" as nlp #aaffaa
+  database "Knowledge\nGraph" as kg
+  database "BGE-M3\nVector Store" as vs
+  component "GMM Clustering\nИерархия уровней\n(centroid-эмбеддинги, без LLM)" as gmm #aaffaa
+}
+
+package "**Query Processor**" as comp_qp {
+  component "LibreChat" as qp
+}
+
+package "**Retriever**" as comp2 {
+  component "bottom-up traversal\nпо иерархии" as graphtraversal #aaffaa
+  component "vector search\nfallback (BGE-M3)" as vectorsearch
+}
+
+package "**Organizer**" as comp_org {
+  component "BGE-M3\n+ token limit" as organizer
+}
+
+package "**Generator**" as comp3 {
+  component "Qwen2.5-0.5B\nна vLLM" as vllm
+}
+
+actor "Клиент МТС" as user
+
+pdfdocx -down-> chunker : документы
+csv -down-> chunker : таблицы
+chunker -down-> nlp : чанки
+nlp -down-> kg : сущности и связи
+nlp -right-> vs : эмбеддинги
+kg -down-> gmm : граф
+
+user -right-> qp : запрос Q
+gmm -right-> graphtraversal : иерархия
+vs -right-> vectorsearch : индекс
+qp -down-> graphtraversal : Q̂
+qp -down-> vectorsearch : Q̂
+graphtraversal -down-> organizer : граф-контекст C
+vectorsearch -down-> organizer : вектор-контекст C
+organizer -right-> vllm : контекст S
+vllm -right-> user : ответ A
+
+note right of nlp
+  Оптимизация 1
+  spaCy NER+RE вместо LLM
+end note
+
+note right of gmm
+  Оптимизация 2
+  centroid-эмбеддинги вместо LLM
+end note
+
+@enduml

@@ -1,0 +1,60 @@
+@startuml RAG_Workflow_Simple
+!theme plain
+skinparam backgroundColor white
+skinparam rectangleBorderColor black
+skinparam rectangleBackgroundColor lightblue
+skinparam arrowColor black
+
+title Постановка задачи: прототип на основе модификации LeanRAG
+
+rectangle "Документы\nPDF / DOCX / CSV" as docs
+
+rectangle "Indexer\n\nspaCy NER+RE без LLM [оптим.]\nKnowledge Graph [LeanRAG]\nBGE-M3 Vector Store\nGMM, Иерархия уровней [LeanRAG]\ncentroid-эмбеддинги без LLM [оптим.]" as indexing #lightgreen
+
+rectangle "Retriever\n\nbottom-up traversal по иерархии [LeanRAG]\n(сущности → кластеры → темы)\n+\nvector search fallback (BGE-M3)" as retrieval #lightgreen
+
+rectangle "Organizer\nBGE-M3 + token limit" as organizer #lightyellow
+
+rectangle "Generator\nQwen2.5-0.5B\nна vLLM" as vllm #lightcoral
+
+rectangle "Ответ" as answer #lightcyan
+
+rectangle "Query Processor\n(запрос пользователя)" as query
+
+docs -right-> indexing
+indexing --> retrieval : граф + векторы
+query -down-> retrieval
+retrieval -right-> organizer
+organizer -right-> vllm
+vllm -right-> answer
+
+note bottom of indexing
+  Оптимизация 1: spaCy NER+RE
+  вместо LLM-извлечения сущностей
+  (LeanRAG: O(N_chunks) LLM-вызовов)
+end note
+
+note bottom of retrieval
+  Оптимизация 2: centroid-эмбеддинги
+  вместо LLM-суммаризации кластеров
+  Retrieved context ≈ 0.9М токенов
+  ----
+  Метрика: recall@k
+end note
+
+note right of answer
+  Метрики качества ответа:
+  Comprehensiveness
+  Empowerment
+  Diversity
+  Overall
+  ----
+  latency (end-to-end)
+end note
+
+legend bottom
+  [оптим.] = замена LLM-вызовов (наши изменения)
+  [LeanRAG] = из LeanRAG без изменений
+endlegend
+
+@enduml

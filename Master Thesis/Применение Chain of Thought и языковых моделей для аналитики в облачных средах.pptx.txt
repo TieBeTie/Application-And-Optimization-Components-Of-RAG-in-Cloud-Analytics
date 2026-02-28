@@ -1,0 +1,143 @@
+Применение и оптимизация компонентов RAG-инфраструктуры для аналитики в облачных средах
+
+Студент группы М05-412в
+Кафедра облачных технологий, МТС, 2025.
+
+Кожагулов Рамазан Романович
+
+Актуальность
+Облака генерируют терабайты логов, метрик и трассировок ежесуточно.
+Ручной анализ не успевает → растут MTTD и MTTR, снижается SLA. 
+LLM умеют читать неструктурированный текст, но ограничены размером контекста.
+RAG (Retrieval-Augmented Generation) решает это: извлекает релевантные данные из графа знаний + генерирует ответы LLM.
+Проблема: существующие RAG либо слишком просты (плоский поиск), либо дороги (LLM-суммаризации на каждом уровне иерархии).
+Chain of Thought раскрывает ход рассуждений: наблюдение → гипотеза → проверка → решение.
+Нужна оптимизация: эффективный граф-retrieval + прозрачное CoT reasoning.
+
+Обзор существующих решений
+Доменные агенты 
+K8sGPT, Firefighting-GPT — простой prompt-engineering, точность падает на сложных инцидентах.
+RAG-фреймворки
+GraphRAG, HippoRAG — строят иерархии графов знаний, но генерируют дорогие LLM-суммаризации на каждом уровне (миллионы токенов).
+Плоские RAG (flat vector search) — top-k поиск по эмбеддингам без учёта структуры знаний, теряют связи между сущностями.
+LightRAG — обещает граф-ориентированный подход с иерархиями, но реальная имплементация использует плоский 1-hop retrieval без реального обхода по слоям. Почти подходит для задачи, но требует оптимизации для повышения точности retrieval.
+Inference-движки для LLM
+vLLM — лучший из существующих движков по производительности и эффективности. Выбран как backend для CoT reasoning.
+Универсальные фреймворки 
+LangChain, PromptFlow, Semantic Kernel — оркестрируют вызовы LLM и позволяют строить CoT-агенты, но не решают проблему эффективного извлечения контекста из больших графов знаний.
+Общие пробелы 
+Нет гарантированной PII-маскировки. Нет прозрачного пошагового объяснения — сложно доверять результату. Падает точность, когда данных слишком много или инцидент нетривиален.
+→ Выбраны LightRAG (с оптимизациями) + vLLM + LangChain для построения системы.
+
+Цели и задачи
+Цель:
+Спроектировать RAG-систему для анализа инцидентов в облачной инфраструктуре MTS на основе оптимизированного LightRAG и vLLM inference.
+Задачи:
+1. Спроектировать архитектуру системы: определить компоненты (сбор данных, retrieval, context management, CoT reasoning, output) и их взаимодействие.
+2. Разработать оптимизации для LightRAG: реализовать hierarchical graph traversal, cumulative embeddings вместо LLM-суммаризаций, adaptive pruning для search space reduction.
+3. Разработать методику оценки: определить технические метрики (precision, latency, memory) и бизнес-метрики (MTTD/MTTR), выбрать baseline для сравнения.
+4. Провести реализацию и экспериментальную валидацию системы на production данных MTS.
+
+Объект, предмет, методы
+Объект: 
+микросервисная облачная платформа MTS (Kubernetes, Prometheus, Loki).
+Предмет: 
+компоненты RAG-инфраструктуры — retrieval layer (graph traversal algorithms), reasoning layer (CoT на vLLM), data organization (иерархические knowledge graphs).
+Методы исследования: 
+(1) аналитический обзор RAG-фреймворков (LightRAG, GraphRAG, HippoRAG) и inference-движков (vLLM, llama.cpp);
+(2) анализ исходного кода LightRAG для выявления узких мест в graph traversal pipeline;
+(3) профилирование memory consumption, retrieval latency и inference throughput на синтетических данных;
+(4) прототипирование hierarchical graph traversal algorithms и cumulative embeddings в Python;
+(5) построение CoT-агента на базе LangChain с интеграцией vLLM через OpenAI-compatible API;
+(6) моделирование инцидентов на исторических логах Prometheus + Loki из production MTS;
+(7) экспертная валидация SRE-командой МТС: оценка понятности reasoning и actionability рекомендаций.
+
+Постановка задачи прототипа
+Система получает alert об инциденте → извлекает query (описание проблемы).
+LightRAG retrieval: иерархический обход графа знаний (логи, метрики, документация K8s) → извлечение top-N релевантных chunks с учётом connectivity.
+Context Management: ранжирование chunks, PII-маскировка, компрессия, укладка в token limit LLM.
+CoT Agent (LangChain + vLLM): пошаговый анализ — observation (что произошло?) → hypothesis (возможные причины?) → verification (проверка по метрикам/логам) → conclusion (root cause + recommendations).
+Генерация отчёта за ≤ 60 с с прозрачным reasoning. Confidence > 0.8 → автосоздание тикета в Jira.
+Схема: Alert → Retrieval (LightRAG) → Context → CoT Reasoning (vLLM) → Report.
+
+Архитектура решения
+
+Поток обработки инцидента:
+
+① Alert поступает в систему → запускает retrieval
+
+② Knowledge Graph (cumulative embeddings)
+   ↓ векторный поиск + обход по связям
+   Извлекаются top-N релевантных chunks
+
+③ Chunks проходят очистку и подготовку
+   • Ранжирование по важности
+   • Удаление дубликатов
+   • Укладка в token limit LLM
+
+④ CoT Agent получает подготовленный контекст
+   ↓ пошаговый анализ (vLLM)
+   Observation → Hypothesis → 
+   Verification → Conclusion
+
+⑤ Результат анализа → два пути:
+   • Отчёт в Slack (всегда)
+   • Jira-тикет (если confidence > 0.8)
+   
+Обратная связь:
+Подтверждённые решения → векторное хранилище → 
+улучшают граф знаний (fine-tuning)
+
+[Диаграмма справа]
+
+План экспериментальной оценки
+Планируемый датасет: 50 синтетических инцидентов на исторических логах Prometheus + Loki из production MTS.
+Baseline для сравнения: (1) K8sGPT с prompt-engineering; (2) flat vector search RAG без графа; (3) ручной анализ SRE-команды.
+Технические метрики для оценки:
+Retrieval precision@10, recall@10 для извлечённых chunks.
+End-to-end latency (retrieval + reasoning + inference) — целевое значение ≤ 60 сек.
+Memory consumption: построение иерархий (cumulative embeddings vs. LLM summaries).
+Бизнес-метрики: MTTD (Mean Time To Detect) и MTTR (Mean Time To Resolve) команды «без агента» vs. «с агентом CoT-LLM».
+Экспертная оценка: опрос SRE о понятности CoT reasoning (transparency score), доверии к рекомендациям (confidence score), actionability (можно ли сразу применить?).
+Этапы: реализация системы → эксперименты → валидация.
+Диаграмма: Baseline vs. ожидаемые показатели (целевые метрики).
+
+Ожидаемый практический эффект
+Технические улучшения:
+Retrieval precision@10 ≥ 0.85 (vs. baseline flat search ~0.65) — иерархический обход графа точнее находит релевантные данные.
+Memory efficiency: построение иерархий через cumulative embeddings без LLM summaries → снижение token overhead на 70–80%.
+End-to-end latency ≤ 60 сек для типового инцидента (retrieval + CoT reasoning + inference).
+CoT transparency: 95% шагов reasoning понятны SRE без дополнительных объяснений (измеряем опросом).
+Бизнес-эффект:
+MTTD ↓ 30–40% — автоматическое извлечение релевантных данных из графа знаний ускоряет обнаружение.
+MTTR ↓ 20–40% — CoT reasoning выдаёт actionable recommendations с прозрачным обоснованием.
+~2 часа экономии на SRE-инженера в сутки — автоматизация рутинного триажа.
+Выравнивание экспертизы: junior SRE получают рекомендации senior-уровня благодаря прозрачному пошаговому анализу.
+Проверка гипотез — после реализации и экспериментальной валидации.
+
+Заключение
+Результаты работы (текущее состояние):
+1. Спроектирована архитектура RAG-системы из 5 компонентов: сбор и индексация → optimized retrieval (LightRAG) → context management → CoT agent (vLLM) → output с обратной связью.
+2. Разработаны оптимизации для LightRAG: hierarchical graph traversal вместо плоского 1-hop retrieval, cumulative embeddings вместо LLM-суммаризаций (снижение token overhead 70-80%), adaptive pruning для search space reduction.
+3. Разработана методика оценки: технические метрики (retrieval precision@10, latency ≤60 сек, memory consumption) и бизнес-метрики (MTTD ↓30-40%, MTTR ↓20-40%). Baseline: K8sGPT, flat RAG, ручной анализ SRE.
+4. Разработан план реализации: этапы внедрения, экспериментальная валидация на 50 production инцидентах MTS, экспертная оценка SRE-командой.
+Текущая работа и следующие шаги:
+реализация optimized retrieval layer: hierarchical graph traversal, cumulative embeddings, adaptive pruning;
+построение knowledge graph на данных Prometheus, Loki, K8s документации;
+интеграция LangChain CoT agent с vLLM;
+проведение экспериментов на 50 production инцидентах MTS;
+экспертная валидация SRE-командой по метрикам transparency, confidence, actionability.
+
+Спасибо за внимание!
+
+Список литературы
+1. Lewis P., Perez E., Piktus A., et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks // arXiv preprint arXiv:2005.11401. — 2020.
+2. Wei J., Wang X., Schuurmans D., et al. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models // arXiv preprint arXiv:2201.11903. — 2022.
+3. Kwon W., Li Z., Zhuang S., et al. Efficient Memory Management for Large Language Model Serving with PagedAttention // SOSP '23: Proceedings of the 29th Symposium on Operating Systems Principles. — 2023.
+4. Edge D., Trinh H., Cheng N., et al. From Local to Global: A Graph RAG Approach to Query-Focused Summarization // arXiv preprint arXiv:2404.16130. — 2024.
+5. Guo Z., Jin R., Liu C., et al. LightRAG: Simple and Fast Retrieval-Augmented Generation // arXiv preprint arXiv:2410.05779. — 2024.
+6. Shum K., Diao S., Zhang T. Automatic Prompt Augmentation and Selection with Chain-of-Thought from Labeled Data // EMNLP. — 2023.
+7. Chase H. LangChain: Building applications with LLMs through composability // GitHub repository. — 2022. — URL: https://github.com/langchain-ai/langchain
+8. Christmann P., Roy R.S., Weikum G. Beyond NED: Fast and Effective Search Space Reduction for Complex Question Answering over Knowledge Bases // WSDM '23. — 2023.
+9. Pramanik S., Saha Roy R., Weikum G. UNIQORN: Unified Question Answering over RDF Knowledge Graphs and Natural Language Text // SIGMOD '24. — 2024.
+10. Prometheus — мониторинг и алертинг для облачных систем // Официальная документация. — URL: https://prometheus.io/docs/

@@ -1,0 +1,28 @@
+/* Light tables for presentation screenshots */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f0f0f0;
+  color: #1a1a1a;
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  padding: 8px 14px;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #cccccc;
+  padding: 7px 14px;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+tr:nth-child(even) td {
+  background-color: #f7f7f7;
+}

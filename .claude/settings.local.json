@@ -5,7 +5,10 @@
       "WebFetch(domain:arxiv.org)",
       "WebFetch(domain:leimao.github.io)",
       "WebFetch(domain:blogs.anshulsc.live)",
-      "WebFetch(domain:www.revisiondojo.com)"
+      "WebFetch(domain:www.revisiondojo.com)",
+      "Bash(py -c:*)",
+      "WebFetch(domain:www.marktechpost.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
