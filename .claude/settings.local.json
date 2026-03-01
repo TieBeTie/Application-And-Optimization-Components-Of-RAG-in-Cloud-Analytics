@@ -8,7 +8,8 @@
       "WebFetch(domain:www.revisiondojo.com)",
       "Bash(py -c:*)",
       "WebFetch(domain:www.marktechpost.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.tudublin.ie)"
     ]
   }
 }

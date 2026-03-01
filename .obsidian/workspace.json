@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Master Thesis/Замечания комиссии.md",
+                "file": "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Замечания комиссии"
+              "title": "2 Встреча с научруком после предзащиты"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Master Thesis/Замечания комиссии.md",
+                "file": "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Замечания комиссии"
+              "title": "Backlinks for 2 Встреча с научруком после предзащиты"
             }
           },
           {
@@ -184,14 +184,14 @@
   },
   "active": "80cd959515d0d9ce",
   "lastOpenFiles": [
-    "Master Thesis/Questions.md",
-    "Master Thesis/Diagrams.md",
-    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
     "Master Thesis/Встречи/1 Переработка архитектуры.md",
+    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
     "Master Thesis/Замечания комиссии.md",
-    "Master Thesis/Презентация.md",
-    "Master Thesis/Текст к презентации RAG.md",
     "GlamAI.md",
+    "Master Thesis/Diagrams.md",
+    "Master Thesis/Questions.md",
+    "Master Thesis/Текст к презентации RAG.md",
+    "Master Thesis/Презентация.md",
     "image.png",
     "Tags.md",
     "Untitled.base",
