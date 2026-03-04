@@ -57,10 +57,12 @@ class NaiveRAGRetriever(BaseRetriever):
             temperature=0.0,
         )
         answer = response.choices[0].message.content
+        prompt_tokens = getattr(response.usage, "prompt_tokens", None)
         total_ms = (time.perf_counter() - t0) * 1000
 
         return RAGResult(
             retrieval=RetrievalResult(chunks=chunks, scores=scores, latency_ms=retrieval_ms),
             answer=answer,
             total_latency_ms=total_ms,
+            prompt_tokens=prompt_tokens,
         )

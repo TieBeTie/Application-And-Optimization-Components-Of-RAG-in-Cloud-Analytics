@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "S",
+  "search": "QUANTI",
   "showTags": true,
   "showAttachments": true,
   "hideUnresolved": false,
@@ -17,6 +17,6 @@
   "repelStrength": 10,
   "linkStrength": 0.510416666666667,
   "linkDistance": 436,
-  "scale": 0.4054298521660623,
+  "scale": 0.25837992984944913,
   "close": false
 }

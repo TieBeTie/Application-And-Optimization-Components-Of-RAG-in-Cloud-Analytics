@@ -43,7 +43,7 @@ def _parse(content: str) -> dict[str, float] | None:
         return None
 
 
-def judge(query: str, answer: str, client: OpenAI, model: str, n_runs: int = 5) -> dict[str, float]:
+def judge(query: str, answer: str, client: OpenAI, model: str, n_runs: int = 1) -> dict[str, float]:
     """
     Run the LLM judge n_runs times and return the mean score per criterion.
 

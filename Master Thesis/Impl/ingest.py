@@ -78,7 +78,6 @@ def ingest(
 
     for doc in docs:
         file_id = str(uuid.uuid4())
-        total_chars += doc.stat().st_size  # bytes ≈ chars for text files
         print(f"Uploading {doc.name} ...", end=" ", flush=True)
 
         if doc.suffix.lower() == ".csv":
@@ -97,8 +96,10 @@ def ingest(
         resp.raise_for_status()
         data = resp.json()
         returned_id = data.get("file_id") or file_id
+        chunks_stored = data.get("chunks_stored", 0)
+        total_chars += chunks_stored * 1500  # CHUNK_SIZE=1500 chars per chunk
         file_ids[doc.name] = returned_id
-        print(f"-> {returned_id}")
+        print(f"-> {returned_id} ({chunks_stored} chunks)")
 
     elapsed = time.perf_counter() - t0
 

@@ -103,7 +103,7 @@ def main():
         faith = faithfulness(rag.answer, rag.retrieval.chunks, anchors, judge_client, LLM_JUDGE_MODEL, n_runs=args.n_runs)
         gnd = groundedness(rag.answer, rag.retrieval.chunks, judge_client, LLM_JUDGE_MODEL)
         rec = recall_at_k(rag.retrieval.chunks, anchors, k=args.k)
-        ctx_tokens = context_tokens(rag.retrieval.chunks)
+        ctx_tokens = rag.prompt_tokens if rag.prompt_tokens is not None else context_tokens(rag.retrieval.chunks)
 
         result = {
             "id": item.get("id", i),

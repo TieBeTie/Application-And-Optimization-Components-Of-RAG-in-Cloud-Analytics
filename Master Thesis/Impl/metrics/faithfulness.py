@@ -52,6 +52,7 @@ def faithfulness(
     prompt = _PROMPT.format(chunks=chunks_text, answer=answer, anchors=anchors_text)
 
     verified_runs = []
+    errors = []
     for _ in range(n_runs):
         try:
             resp = client.chat.completions.create(
@@ -65,7 +66,11 @@ def faithfulness(
             result = json.loads(text)
             verified_runs.append(result.get("verified", 0))
         except Exception as e:
-            return {"verified": 0, "total": len(anchors), "score": 0.0, "error": str(e)}
+            errors.append(str(e))
+            continue
+
+    if not verified_runs:
+        return {"verified": None, "total": len(anchors), "score": None, "errors": errors}
 
     verified = round(sum(verified_runs) / len(verified_runs))
     total = len(anchors)

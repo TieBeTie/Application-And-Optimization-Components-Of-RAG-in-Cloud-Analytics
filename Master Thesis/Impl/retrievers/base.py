@@ -14,6 +14,7 @@ class RAGResult:
     retrieval: RetrievalResult
     answer: str
     total_latency_ms: float
+    prompt_tokens: int | None = None  # exact count from resp.usage, None if unavailable
 
 
 class BaseRetriever(ABC):

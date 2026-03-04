@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "RAG/RAG Evaluation.md",
+                "file": "Math/Cholesky Decomposition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RAG Evaluation"
+              "title": "Cholesky Decomposition"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "RAG/RAG Evaluation.md",
+                "file": "Math/Cholesky Decomposition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for RAG Evaluation"
+              "title": "Backlinks for Cholesky Decomposition"
             }
           },
           {
@@ -184,6 +184,13 @@
   },
   "active": "0d063495bdebe316",
   "lastOpenFiles": [
+    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
+    "Inference/Quantization.md",
+    "Inference/PTQ.md",
+    "Ideas/Balanced HSNWs RAG.md",
+    "Inference/FLOPs.md",
+    "Inference/GPTQ Algorithm.md",
+    "RAG/RAG Evaluation.md",
     "Statistics/Practice/Задание_2_Асимптотические_ДИ_Бутстреп.ipynb",
     "Statistics/Practice/task_2.ipynb",
     "Statistics/Robust_Estimator_Selection.md",
@@ -198,7 +205,6 @@
     "Statistics/Practice/Семинар_3_МПО_Метод_Ньютона.ipynb",
     "Statistics/Practice/Семинар_2_Бутстреп.ipynb",
     "Statistics/Practice/Семинар_1_МТС_Доверительные_интервалы.ipynb",
-    "Statistics/Practice/Семинар_13_Байес_практика_2.ipynb",
     "Statistics/Методичка_Математическая_статистика.md",
     "RAG/GraphRAG query process.md",
     "Tags.md",
@@ -207,20 +213,14 @@
     "ML/Evaluation Metric Selection.md",
     "ML/Broadcast.md",
     "Master Thesis/Замечания комиссии.md",
-    "RAG/RAG Evaluation.md",
     "Master Thesis/tasks.md",
     "Master Thesis/Текст к презентации RAG.md",
     "Master Thesis/Diagrams.md",
-    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
     "Master Thesis/Questions.md",
     "Master Thesis/Impl/rag_api/README.md",
     "Master Thesis/Impl/results.md",
     "Master Thesis/Встречи/1 Переработка архитектуры.md",
     "Inference/Layer-wise Quantization.md",
-    "Inference/GPTQ Algorithm.md",
-    "Inference/FLOPs.md",
-    "Ideas/Summary on entities.md",
-    "Inference/Quantization Grid.md",
     "RAG/LightRAG Impl/lightrag/api/static/swagger-ui/favicon-32x32.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323194750379.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323122754387.png",
