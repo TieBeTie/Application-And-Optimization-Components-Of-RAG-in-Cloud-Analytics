@@ -9,7 +9,8 @@
       "Bash(py -c:*)",
       "WebFetch(domain:www.marktechpost.com)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:www.tudublin.ie)"
+      "WebFetch(domain:www.tudublin.ie)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }

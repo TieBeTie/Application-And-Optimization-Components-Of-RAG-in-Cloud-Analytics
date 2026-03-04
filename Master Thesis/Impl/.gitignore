@@ -1,0 +1,6 @@
+.env
+*.pyc
+__pycache__/
+datasets/file_ids.json
+datasets/indexing_cost.json
+results/

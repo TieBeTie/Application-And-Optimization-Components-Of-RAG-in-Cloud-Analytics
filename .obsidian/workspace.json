@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "f3554b4c1a935c1f",
+        "id": "7ef2f1bb7c2253cd",
         "type": "tabs",
         "children": [
           {
-            "id": "80cd959515d0d9ce",
+            "id": "0d063495bdebe316",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
+                "file": "RAG/RAG Evaluation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2 Встреча с научруком после предзащиты"
+              "title": "RAG Evaluation"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5
+    "width": 514.5
   },
   "right": {
     "id": "8e516f90ff888bfb",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
+                "file": "RAG/RAG Evaluation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2 Встреча с научруком после предзащиты"
+              "title": "Backlinks for RAG Evaluation"
             }
           },
           {
@@ -182,45 +182,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "80cd959515d0d9ce",
+  "active": "0d063495bdebe316",
   "lastOpenFiles": [
-    "Master Thesis/Встречи/1 Переработка архитектуры.md",
-    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
-    "Master Thesis/Замечания комиссии.md",
-    "GlamAI.md",
-    "Master Thesis/Diagrams.md",
-    "Master Thesis/Questions.md",
-    "Master Thesis/Текст к презентации RAG.md",
-    "Master Thesis/Презентация.md",
-    "image.png",
+    "Master Thesis/Impl/indexing_throughput.json",
+    "Master Thesis/Impl/rag_api/uploads/public/financial_report_q4_2023_669a847b5e534684ad0f4ada1dae500f.txt",
+    "Master Thesis/Impl/rag_api/uploads/public/contract_001_90c005775e174c7b94e1135a67a84b31.txt",
+    "Master Thesis/Impl/metrics/__pycache__/computational_cost.cpython-312.pyc",
+    "RAG/GraphRAG query process.md",
     "Tags.md",
-    "Untitled.base",
-    "Untitled 1.base",
+    "image.png",
+    "ML/K-means.md",
+    "ML/Evaluation Metric Selection.md",
+    "ML/Broadcast.md",
+    "Master Thesis/Замечания комиссии.md",
+    "RAG/RAG Evaluation.md",
+    "Master Thesis/tasks.md",
+    "Master Thesis/Текст к презентации RAG.md",
+    "Master Thesis/Impl/rag_api/test_requirements.txt",
+    "Master Thesis/Текст к презентации RAG.md.tmp.47280.1772566460422",
+    "Master Thesis/Текст к презентации RAG.md.tmp.47280.1772566446154",
+    "Master Thesis/Impl/run_eval.py.tmp.30132.1772490733134",
+    "Master Thesis/Impl/metrics/computational_cost.py",
+    "Master Thesis/Diagrams.md",
+    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
+    "Master Thesis/Questions.md",
+    "Master Thesis/Impl/results/naive_rag.jsonl",
+    "Master Thesis/Impl/retrievers/__pycache__/naive_rag.cpython-312.pyc",
+    "Master Thesis/Impl/rag_api/README.md",
+    "Master Thesis/Impl/results.md",
+    "Master Thesis/Встречи/1 Переработка архитектуры.md",
+    "Inference/Layer-wise Quantization.md",
     "Inference/GPTQ Algorithm.md",
     "Inference/FLOPs.md",
-    "Ideas/Diffusion Inference on Single GPU.md",
-    "Articles/RAG/leanrag_2508.10391.pdf",
-    "Articles/RAG/iterative_graphrag_2509.25530.pdf",
-    "Articles/RAG/graphrag_local_global_2404.16130.pdf",
-    "Articles/RAG/GraphRAG и LightRAG_ обзор подходов.pdf",
-    "Articles/RAG/graphrag_bench_2506.02404.pdf",
-    "Articles/Inference/GPTQ.pdf",
-    "Master Thesis/Встречи/Переработка архитектуры.md",
-    "Master Thesis/Встречи",
-    "RAG/Components/Query Processor/Query/Query Structuration.md",
-    "RAG/Components/Query Processor/Query/Query Expansion.md",
-    "RAG/Components/Query Processor/Query/Query Decomposition.md",
-    "RAG/Components/Query Processor/Query/Query.md",
-    "RAG/Components/Query Processor/Query Processor.md",
-    "NLP/Relation Extraction.md",
-    "NLP/Named Entity Recognition.md",
-    "ML/K-means.md",
-    "ML/Broadcast.md",
-    "Master Thesis/Замечания комиссии.md.tmp.34148.1771599498062",
-    "Master Thesis/Переработка архитектуры.md",
-    "Master Thesis/Инструкция для Claude.md",
-    "Ideas/Template-based Optimization.md",
     "Ideas/Summary on entities.md",
+    "Inference/Quantization Grid.md",
+    "Inference/Quantization.md",
+    "Inference/PTQ.md",
+    "Inference/QAT.md",
+    "Inference/Perplexity.md",
+    "Inference/OBQ.md",
     "RAG/LightRAG Impl/lightrag/api/static/swagger-ui/favicon-32x32.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323194750379.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323122754387.png",
