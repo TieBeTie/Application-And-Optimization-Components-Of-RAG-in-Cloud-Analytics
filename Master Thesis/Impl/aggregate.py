@@ -4,6 +4,15 @@ Aggregate results/*.jsonl into a summary table.
 Usage:
     python aggregate.py                        # all files in results/
     python aggregate.py results/naive_rag.jsonl results/light_rag.jsonl
+
+Statistics per metric type:
+    Quality scores (C, E, D, Overall, faithfulness, groundedness, recall@k):
+        mean — standard in RAGAS / LeanRAG / GraphRAG literature.
+    Latency:
+        mean, p50, p95 — mean is sensitive to outliers; p95 captures tail behaviour
+        and is required for any SLA claim (e.g. "latency ≤ 5 s").
+    Context tokens:
+        mean — average resource consumption per query.
 """
 import json
 import statistics
@@ -13,6 +22,18 @@ from pathlib import Path
 JUDGE_KEYS = ("Comprehensiveness", "Empowerment", "Diversity", "Overall")
 
 
+def percentile(data: list[float], p: float) -> float:
+    """
+    Nearest-rank percentile. p in [0, 100].
+    With small n (e.g. n=10) results are approximate.
+    """
+    if not data:
+        return 0.0
+    sorted_data = sorted(data)
+    idx = max(0, int(len(sorted_data) * p / 100) - 1)
+    return sorted_data[idx]
+
+
 def load(path: str) -> list[dict]:
     with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
@@ -20,15 +41,8 @@ def load(path: str) -> list[dict]:
 
 def aggregate(results: list[dict]) -> dict:
     buckets: dict[str, list[float]] = {
-        k: []
-        for k in (
-            *JUDGE_KEYS,
-            "faithfulness",
-            "groundedness",
-            "recall_at_k",
-            "context_tokens_approx",
-            "latency_total_ms",
-        )
+        k: [] for k in (*JUDGE_KEYS, "faithfulness", "groundedness",
+                        "recall_at_k", "context_tokens_approx", "latency_ms")
     }
 
     for r in results:
@@ -53,9 +67,29 @@ def aggregate(results: list[dict]) -> dict:
         if ctx is not None:
             buckets["context_tokens_approx"].append(float(ctx))
 
-        buckets["latency_total_ms"].append(float(r.get("latency_total_ms", 0)))
+        lat = r.get("latency_total_ms")
+        if lat is not None:
+            buckets["latency_ms"].append(float(lat))
 
-    return {k: round(statistics.mean(v), 3) if v else None for k, v in buckets.items()}
+    out: dict[str, float | None] = {}
+
+    # Quality metrics: mean ± std (standard in RAGAS / LeanRAG literature)
+    for k in (*JUDGE_KEYS, "faithfulness", "groundedness", "recall_at_k", "context_tokens_approx"):
+        v = buckets[k]
+        if v:
+            out[k] = round(statistics.mean(v), 3)
+            out[f"{k}_std"] = round(statistics.stdev(v), 3) if len(v) > 1 else 0.0
+        else:
+            out[k] = None
+            out[f"{k}_std"] = None
+
+    # Latency: mean + p50 + p95 (skewed distribution, SLA claim)
+    lat_vals = buckets["latency_ms"]
+    out["latency_mean_ms"] = round(statistics.mean(lat_vals), 1) if lat_vals else None
+    out["latency_p50_ms"]  = round(percentile(lat_vals, 50), 1) if lat_vals else None
+    out["latency_p95_ms"]  = round(percentile(lat_vals, 95), 1) if lat_vals else None
+
+    return out
 
 
 def print_table(rows: list[tuple[str, dict]]) -> None:

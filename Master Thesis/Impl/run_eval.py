@@ -100,7 +100,7 @@ def main():
             continue
 
         judge_scores = judge(query, rag.answer, judge_client, LLM_JUDGE_MODEL, n_runs=args.n_runs)
-        faith = faithfulness(rag.answer, rag.retrieval.chunks, anchors, judge_client, LLM_JUDGE_MODEL)
+        faith = faithfulness(rag.answer, rag.retrieval.chunks, anchors, judge_client, LLM_JUDGE_MODEL, n_runs=args.n_runs)
         gnd = groundedness(rag.answer, rag.retrieval.chunks, judge_client, LLM_JUDGE_MODEL)
         rec = recall_at_k(rag.retrieval.chunks, anchors, k=args.k)
         ctx_tokens = context_tokens(rag.retrieval.chunks)
@@ -108,6 +108,7 @@ def main():
         result = {
             "id": item.get("id", i),
             "query": query,
+            "anchors": anchors,
             "answer": rag.answer,
             "chunks": rag.retrieval.chunks,
             "scores": rag.retrieval.scores,

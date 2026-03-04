@@ -44,6 +44,13 @@ def _parse(content: str) -> dict[str, float] | None:
 
 
 def judge(query: str, answer: str, client: OpenAI, model: str, n_runs: int = 5) -> dict[str, float]:
+    """
+    Run the LLM judge n_runs times and return the mean score per criterion.
+
+    temperature=0.0: the judge is deterministic — all n_runs produce identical results.
+    n_runs verifies determinism (variance should be 0), not reduces it.
+    For genuine variance reduction, use temperature > 0.
+    """
     runs: list[dict[str, float]] = []
     for _ in range(n_runs):
         try:
