@@ -54,4 +54,4 @@ def groundedness(answer: str, chunks: list[str], client: OpenAI, model: str) -> 
             text = "\n".join(text.split("\n")[1:-1])
         return json.loads(text)
     except Exception as e:
-        return {"verified": 0, "total": 0, "score": None, "error": str(e)}
+        return {"verified": None, "total": None, "score": None, "error": str(e)}

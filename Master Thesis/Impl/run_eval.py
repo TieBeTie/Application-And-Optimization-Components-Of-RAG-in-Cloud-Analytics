@@ -43,7 +43,7 @@ LLM_JUDGE_API_KEY = os.getenv("LLM_JUDGE_API_KEY")
 LLM_JUDGE_BASE_URL = os.getenv("LLM_JUDGE_BASE_URL", "https://api.groq.com/openai/v1")
 LLM_JUDGE_MODEL = os.getenv("LLM_JUDGE_MODEL", "llama-3.3-70b-versatile")
 TOP_K = int(os.getenv("TOP_K", "5"))
-N_JUDGE_RUNS = int(os.getenv("N_JUDGE_RUNS", "5"))
+N_JUDGE_RUNS = int(os.getenv("N_JUDGE_RUNS", "1"))
 
 RETRIEVERS = {
     "naive_rag": NaiveRAGRetriever,

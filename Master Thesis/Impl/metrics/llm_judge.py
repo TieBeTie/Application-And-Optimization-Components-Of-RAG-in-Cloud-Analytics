@@ -69,5 +69,5 @@ def judge(query: str, answer: str, client: OpenAI, model: str, n_runs: int = 1) 
             continue
 
     if not runs:
-        return {}
+        return {k: None for k in _KEYS}
     return {k: round(statistics.mean(r[k] for r in runs if k in r), 3) for k in _KEYS}

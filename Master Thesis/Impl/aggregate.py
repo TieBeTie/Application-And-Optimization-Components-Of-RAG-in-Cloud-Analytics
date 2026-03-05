@@ -15,6 +15,7 @@ Statistics per metric type:
         mean — average resource consumption per query.
 """
 import json
+import math
 import statistics
 import sys
 from pathlib import Path
@@ -30,7 +31,7 @@ def percentile(data: list[float], p: float) -> float:
     if not data:
         return 0.0
     sorted_data = sorted(data)
-    idx = max(0, int(len(sorted_data) * p / 100) - 1)
+    idx = min(len(sorted_data) - 1, max(0, math.ceil(len(sorted_data) * p / 100) - 1))
     return sorted_data[idx]
 
 
