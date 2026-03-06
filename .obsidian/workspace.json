@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "7ef2f1bb7c2253cd",
+        "id": "89cc99cfe3103a56",
         "type": "tabs",
         "children": [
           {
-            "id": "0d063495bdebe316",
+            "id": "80422429f7b6a443",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Math/Cholesky Decomposition.md",
+                "file": "RAG/Metrics/LLM Judge.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Cholesky Decomposition"
+              "title": "LLM Judge"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Math/Cholesky Decomposition.md",
+                "file": "RAG/Metrics/LLM Judge.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Cholesky Decomposition"
+              "title": "Backlinks for LLM Judge"
             }
           },
           {
@@ -182,45 +182,47 @@
       "bases:Create new base": false
     }
   },
-  "active": "0d063495bdebe316",
+  "active": "80422429f7b6a443",
   "lastOpenFiles": [
-    "Master Thesis/Встречи/2 Встреча с научруком после предзащиты.md",
-    "Inference/Quantization.md",
-    "Inference/PTQ.md",
-    "Ideas/Balanced HSNWs RAG.md",
-    "Inference/FLOPs.md",
-    "Inference/GPTQ Algorithm.md",
+    "Master Thesis/Impl/results/human_annotation.md",
+    "RAG/Evaluator/Annotator Guide.md",
+    "RAG/Evaluator/Corpus Design.md",
+    "Master Thesis/Impl/results/light_rag.jsonl",
+    "RAG/LightRAG Impl/rag_storage/graph_chunk_entity_relation.graphml",
+    "RAG/LightRAG Impl/rag_storage/vdb_chunks.json",
+    "RAG/LightRAG Impl/rag_storage/vdb_relationships.json",
+    "RAG/LightRAG Impl/rag_storage/vdb_entities.json",
+    "RAG/LightRAG Impl/rag_storage/kv_store_llm_response_cache.json",
+    "RAG/LightRAG Impl/rag_storage/kv_store_relation_chunks.json",
+    "RAG/LightRAG Impl/rag_storage/kv_store_entity_chunks.json",
+    "RAG/LightRAG Impl/rag_storage/kv_store_full_relations.json",
+    "RAG/LightRAG Impl/rag_storage/kv_store_full_entities.json",
+    "RAG/Evaluator/Question Taxonomy.md",
+    "RAG/Evaluator/Eval Dataset.md",
+    "RAG/Evaluator/Construction Protocol.md",
+    "RAG/Evaluator/Evaluation Agents.md",
+    "RAG/Components/Generator/Generator.md",
+    "RAG/Eval Dataset.md",
+    "RAG/Evaluation Agents.md",
+    "RAG/Construction Protocol.md",
+    "RAG/Metrics/LLM Judge.md",
     "RAG/RAG Evaluation.md",
-    "Statistics/Practice/Задание_2_Асимптотические_ДИ_Бутстреп.ipynb",
-    "Statistics/Practice/task_2.ipynb",
-    "Statistics/Robust_Estimator_Selection.md",
-    "Statistics/Hodges_Lehmann_Estimator.md",
-    "Statistics/Trimmed_Mean.md",
-    "Statistics/Breakdown_Point.md",
-    "Statistics/Practice/Семинар_9_CUPED.ipynb",
-    "Statistics/Practice/Семинар_7_АА_тесты.ipynb",
-    "Statistics/Practice/Семинар_6_Множественная_проверка_гипотез.ipynb",
-    "Statistics/Practice/Семинар_5_Проверка_гипотез_p-value.ipynb",
-    "Statistics/Practice/Семинар_4_Робастные_оценки.ipynb",
-    "Statistics/Practice/Семинар_3_МПО_Метод_Ньютона.ipynb",
-    "Statistics/Practice/Семинар_2_Бутстреп.ipynb",
-    "Statistics/Practice/Семинар_1_МТС_Доверительные_интервалы.ipynb",
-    "Statistics/Методичка_Математическая_статистика.md",
-    "RAG/GraphRAG query process.md",
+    "RAG/Question Taxonomy.md",
+    "LLM Judge.md",
     "Tags.md",
-    "image.png",
-    "ML/K-means.md",
-    "ML/Evaluation Metric Selection.md",
-    "ML/Broadcast.md",
+    "RAG/GraphRAG query process.md",
+    "RAG/Metrics/Groundedness.md",
+    "RAG/Metrics/Faithfulness.md",
+    "Master Thesis/Презентация.md",
+    "Master Thesis/Расшифровка встречи замечаний комиссии.md",
+    "Master Thesis/Impl/datasets/HOW_TO_BUILD_EVAL_DATASET.md",
+    "Master Thesis/Impl/LeanRAG/README.md",
+    "Master Thesis/Impl/LeanRAG/pic/Retrieval_infromation_tokens.png",
+    "Master Thesis/Impl/LeanRAG/pic/framework.png",
     "Master Thesis/Замечания комиссии.md",
     "Master Thesis/tasks.md",
-    "Master Thesis/Текст к презентации RAG.md",
-    "Master Thesis/Diagrams.md",
     "Master Thesis/Questions.md",
-    "Master Thesis/Impl/rag_api/README.md",
-    "Master Thesis/Impl/results.md",
-    "Master Thesis/Встречи/1 Переработка архитектуры.md",
-    "Inference/Layer-wise Quantization.md",
+    "image.png",
     "RAG/LightRAG Impl/lightrag/api/static/swagger-ui/favicon-32x32.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323194750379.png",
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323122754387.png",
@@ -228,8 +230,6 @@
     "RAG/LightRAG Impl/lightrag/api/README.assets/image-20250323122538997.png",
     "RAG/LightRAG Impl/lightrag_webui/public/logo.svg",
     "RAG/LightRAG Impl/lightrag_webui/public/favicon.png",
-    "RAG/LightRAG Impl/README.assets/iShot_2025-03-23_12.40.08.png",
-    "RAG/LightRAG Impl/README.assets/b2aaf634151b4706892693ffb43d9093.png",
     "Untitled.canvas"
   ]
 }

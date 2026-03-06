@@ -27,8 +27,6 @@ from metrics.faithfulness import faithfulness
 from metrics.groundedness import groundedness
 from metrics.llm_judge import judge
 from metrics.recall import recall_at_k
-from retrievers.light_rag import LightRAGRetriever
-from retrievers.naive_rag import NaiveRAGRetriever
 
 load_dotenv()
 
@@ -45,25 +43,28 @@ LLM_JUDGE_MODEL = os.getenv("LLM_JUDGE_MODEL", "llama-3.3-70b-versatile")
 TOP_K = int(os.getenv("TOP_K", "5"))
 N_JUDGE_RUNS = int(os.getenv("N_JUDGE_RUNS", "1"))
 
-RETRIEVERS = {
-    "naive_rag": NaiveRAGRetriever,
-    "light_rag": LightRAGRetriever,
-}
+
+RETRIEVER_NAMES = ["naive_rag", "light_rag", "lean_rag"]
 
 
 def build_retriever(name: str, gen_client: OpenAI, file_ids: list[str]):
     if name == "naive_rag":
+        from retrievers.naive_rag import NaiveRAGRetriever
         return NaiveRAGRetriever(
             rag_api_url=RAG_API_URL, file_ids=file_ids, client=gen_client, model=RAG_GENERATOR_MODEL
         )
     if name == "light_rag":
+        from retrievers.light_rag import LightRAGRetriever
         return LightRAGRetriever(lightrag_api_url=LIGHTRAG_API_URL)
+    if name == "lean_rag":
+        from retrievers.lean_rag import LeanRAGRetriever
+        return LeanRAGRetriever()
     raise ValueError(f"Unknown retriever: {name}")
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--retriever", default="naive_rag", choices=list(RETRIEVERS))
+    parser.add_argument("--retriever", default="naive_rag", choices=RETRIEVER_NAMES)
     parser.add_argument("--queries", default="datasets/queries.jsonl")
     parser.add_argument("--file-ids", default="file_ids.json")
     parser.add_argument("--output", default=None)

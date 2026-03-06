@@ -29,6 +29,15 @@ For a financial doc: "revenue 167B RUB, +5% vs Q3" scores high — a reader can 
 ### Limitation — Diversity in document RAG
 Diversity was introduced in the GraphRAG paper for knowledge-graph QA, where an answer should synthesize multiple community clusters. For single-document or homogeneous financial reports, low Diversity reflects the nature of the corpus, not retrieval quality. Report Diversity scores with this caveat in the thesis.
 
+### Calibration
+An LLM judge is calibrated for a domain iff its scores correlate with human scores on a golden set.
+
+**Protocol.** Collect $\geq 30$ human-annotated $(q, a, s^*)$ triples where $s^* \in [1,10]$ is the human score. Compute Spearman $\rho$ between judge scores and $s^*$. Accept the judge iff $\rho \geq 0.7$.
+
+If $\rho < 0.7$: adjust the judge prompt, switch models, or add domain-specific rubric examples.
+
+Calibration must be re-run if the judge model or prompt changes.
+
 ### Relationship to other metrics
 LLM Judge captures fluency and reasoning quality; [[Faithfulness]] and [[Groundedness]] capture factual grounding. A high Overall score with low Groundedness indicates a fluent but hallucinated answer.
 

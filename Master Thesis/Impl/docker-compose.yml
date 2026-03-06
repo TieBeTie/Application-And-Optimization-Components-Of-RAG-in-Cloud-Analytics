@@ -36,6 +36,20 @@ services:
               count: all
               capabilities: [gpu]
 
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: "123"
+    ports:
+      - "4321:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p123"]
+      interval: 5s
+      retries: 10
+
 volumes:
   pgdata:
   hf_cache:
+  mysqldata:

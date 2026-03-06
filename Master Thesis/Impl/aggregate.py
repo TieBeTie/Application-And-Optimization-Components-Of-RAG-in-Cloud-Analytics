@@ -43,7 +43,7 @@ def load(path: str) -> list[dict]:
 def aggregate(results: list[dict]) -> dict:
     buckets: dict[str, list[float]] = {
         k: [] for k in (*JUDGE_KEYS, "faithfulness", "groundedness",
-                        "recall_at_k", "context_tokens_approx", "latency_ms")
+                        "recall_at_k", "context_tokens", "latency_ms")
     }
 
     for r in results:
@@ -66,7 +66,7 @@ def aggregate(results: list[dict]) -> dict:
 
         ctx = r.get("context_tokens")
         if ctx is not None:
-            buckets["context_tokens_approx"].append(float(ctx))
+            buckets["context_tokens"].append(float(ctx))
 
         lat = r.get("latency_total_ms")
         if lat is not None:
@@ -75,7 +75,7 @@ def aggregate(results: list[dict]) -> dict:
     out: dict[str, float | None] = {}
 
     # Quality metrics: mean ± std (standard in RAGAS / LeanRAG literature)
-    for k in (*JUDGE_KEYS, "faithfulness", "groundedness", "recall_at_k", "context_tokens_approx"):
+    for k in (*JUDGE_KEYS, "faithfulness", "groundedness", "recall_at_k", "context_tokens"):
         v = buckets[k]
         if v:
             out[k] = round(statistics.mean(v), 3)
@@ -93,18 +93,36 @@ def aggregate(results: list[dict]) -> dict:
     return out
 
 
+def fmt_mean_std(mean, std) -> str:
+    if mean is None:
+        return "-"
+    if std is None or std == 0.0:
+        return str(mean)
+    return f"{mean} ± {std}"
+
+
 def print_table(rows: list[tuple[str, dict]]) -> None:
-    col_w = 22
-    keys = list(rows[0][1].keys())
+    col_w = 24
+    # Display metrics: quality as "mean ± std", latency as separate p50/p95 rows
+    quality_keys = (*JUDGE_KEYS, "faithfulness", "groundedness", "recall_at_k", "context_tokens")
+    latency_keys = ("latency_mean_ms", "latency_p50_ms", "latency_p95_ms")
+
     header = f"{'metric':<{col_w}}" + "".join(f"{name:>{col_w}}" for name, _ in rows)
     print(header)
     print("-" * len(header))
-    for key in keys:
-        row = f"{key:<{col_w}}" + "".join(
-            f"{(str(agg[key]) if agg[key] is not None else '-'):>{col_w}}"
-            for _, agg in rows
-        )
-        print(row)
+
+    for k in quality_keys:
+        vals = []
+        for _, agg in rows:
+            vals.append(fmt_mean_std(agg.get(k), agg.get(f"{k}_std")))
+        print(f"{k:<{col_w}}" + "".join(f"{v:>{col_w}}" for v in vals))
+
+    for k in latency_keys:
+        vals = []
+        for _, agg in rows:
+            v = agg.get(k)
+            vals.append(str(v) if v is not None else "-")
+        print(f"{k:<{col_w}}" + "".join(f"{v:>{col_w}}" for v in vals))
 
 
 if __name__ == "__main__":
